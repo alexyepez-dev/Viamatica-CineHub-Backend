@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\VMT.CineHub.Application\VMT.CineHub.Application.csproj" />
+    <ProjectReference Include="..\..\Core\VMT.CineHub.Domain\VMT.CineHub.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
