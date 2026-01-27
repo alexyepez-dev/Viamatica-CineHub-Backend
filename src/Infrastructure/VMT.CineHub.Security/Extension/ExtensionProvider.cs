@@ -1,5 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using VMT.CineHub.Security.Configurations.Access;
 using VMT.CineHub.Security.Configurations.Construction;
 using VMT.CineHub.Security.Interfaces.Access;
@@ -19,6 +22,22 @@ public static class ExtensionProvider
 
         services.AddScoped<ITokenConstruction, TokenConstruction>();
         services.AddScoped<IAccessToken, AccessToken>();
+
+        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer
+                (
+                    x => x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]!)),
+                        ValidateIssuer = true,
+                        ValidIssuer = configuration["JwtSettings:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = configuration["JwtSettings:Audience"],
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
+                    }
+                );
 
         return services;
     }
