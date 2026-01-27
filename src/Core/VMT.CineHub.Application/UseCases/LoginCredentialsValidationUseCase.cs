@@ -17,11 +17,7 @@ internal sealed class LoginCredentialsValidationUseCase
 
     public async Task<bool> Validate(LoginCommandRequestDto dto)
     {
-        var emailResult = Email.Create(dto.Email);
-        if (!emailResult.IsSuccess) return false;
-
-        var email = emailResult.Value;
-        var user = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Email == email);
+        var user = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Email == Email.Create(dto.Email).Value);
 
         if (user is null) return false;
 

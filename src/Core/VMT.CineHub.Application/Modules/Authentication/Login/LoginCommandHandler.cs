@@ -32,7 +32,7 @@ internal sealed class LoginCommandHandler
 
         if (!await useCase.Validate(dto)) return Result<LoginCommandResponseDto>.Fail
         (
-            "We're sorry, existing credentials.",
+            "We're sorry, invalid credentials.",
             ErrorType.Validation
         );
 

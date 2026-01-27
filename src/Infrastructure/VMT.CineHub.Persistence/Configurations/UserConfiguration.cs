@@ -18,7 +18,7 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
                .HasMaxLength(Email.MaxLength);
 
         builder.Property(x => x.Password)
-               .HasMaxLength(50);
+               .HasMaxLength(100);
 
         builder.HasOne(x => x.Person)
                .WithOne()

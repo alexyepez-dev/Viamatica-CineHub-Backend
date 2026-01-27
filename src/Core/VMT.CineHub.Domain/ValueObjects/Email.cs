@@ -19,7 +19,7 @@ public sealed class Email
             ErrorType.Validation
         );
 
-        if (value.Length != 10) return Result<Email>.Fail
+        if (value.Length > MaxLength || value.Length == 0) return Result<Email>.Fail
         (
             DomainErrors.MaximumLength("email", MaxLength),
             ErrorType.Validation
