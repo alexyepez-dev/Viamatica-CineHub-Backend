@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VMT.CineHub.Domain.Repositories;
 using VMT.CineHub.Persistence.Database;
+using VMT.CineHub.Persistence.Repositories;
 
 namespace VMT.CineHub.Persistence.Extension;
 public static class ExtensionProvider
@@ -14,7 +15,7 @@ public static class ExtensionProvider
     )
     {
         services.AddDbContext<CineHubDbContext>(x => x.UseSqlServer(configuration["ConnectionStrings:SqlServer"]));
-        services.AddScoped(typeof(IRepository<>));
+        services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;
     }

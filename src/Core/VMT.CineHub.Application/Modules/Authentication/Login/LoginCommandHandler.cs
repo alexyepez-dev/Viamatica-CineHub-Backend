@@ -1,5 +1,6 @@
 ﻿using VMT.CineHub.Application.DTOs.Authentication.Login;
 using VMT.CineHub.Application.Interfaces.Authentication.Login;
+using VMT.CineHub.Application.Interfaces.UseCases;
 using VMT.CineHub.Application.UseCases;
 using VMT.CineHub.Domain.Entities;
 using VMT.CineHub.Domain.Enums;
@@ -12,24 +13,24 @@ internal sealed class LoginCommandHandler
 (
     IAccessToken _accessToken,
     IRepository<User> _repository,
-    LoginCredentialsValidationUseCase _useCase
+    ILoginCredentialsValidationUseCase _useCase
 ) : ILoginCommandHandler
 {
     private readonly IAccessToken accessToken = _accessToken;
     private readonly IRepository<User> repository = _repository;
-    private readonly LoginCredentialsValidationUseCase useCase = _useCase;
+    private readonly ILoginCredentialsValidationUseCase useCase = _useCase;
 
     public async Task<Result<LoginCommandResponseDto>> Execute(LoginCommandRequestDto dto)
     {
-        var credentials = await repository.GetByAsync(dto.Username);
+        var credentials = await repository.GetByAsync(x => x.Username == dto.Username);
 
-        if(credentials is null) return Result<LoginCommandResponseDto>.Fail
+        if (credentials is null) return Result<LoginCommandResponseDto>.Fail
         (
             "We're sorry, credentials not found.",
             ErrorType.NotFound
         );
 
-        if (!await useCase.Validate(dto, credentials.Password)) return Result<LoginCommandResponseDto>.Fail
+        if (!await useCase.Validate(dto)) return Result<LoginCommandResponseDto>.Fail
         (
             "We're sorry, existing credentials.",
             ErrorType.Validation

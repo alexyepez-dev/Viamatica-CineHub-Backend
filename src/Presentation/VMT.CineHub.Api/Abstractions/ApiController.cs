@@ -18,10 +18,10 @@ public abstract class ApiController : ControllerBase
         var errorStatus = result.ErrorType.ToHttpStatusCode();
         return errorStatus switch
         {
-            HttpStatusCode.BadRequest => BadRequest(),
-            HttpStatusCode.NotFound => NotFound(),
-            HttpStatusCode.Conflict => Conflict(),
-            HttpStatusCode.Unauthorized => Unauthorized(),
+            HttpStatusCode.BadRequest => BadRequest(new { message = result.Error }),
+            HttpStatusCode.NotFound => NotFound(new { message = result.Error }),
+            HttpStatusCode.Conflict => Conflict(new { message = result.Error }),
+            HttpStatusCode.Unauthorized => Unauthorized(new { message = result.Error }),
             _ => StatusCode((int)HttpStatusCode.InternalServerError, new { })
         };
     }

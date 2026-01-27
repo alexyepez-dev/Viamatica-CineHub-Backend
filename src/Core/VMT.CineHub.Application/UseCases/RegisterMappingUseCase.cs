@@ -1,5 +1,6 @@
 ﻿using VMT.CineHub.Application.DTOs.Authentication.Register;
 using VMT.CineHub.Application.Interfaces.Mappers;
+using VMT.CineHub.Application.Interfaces.UseCases;
 using VMT.CineHub.Persistence.Database;
 
 namespace VMT.CineHub.Application.UseCases;
@@ -7,7 +8,7 @@ internal sealed class RegisterMappingUseCase
 (
     IMapping _mapping,
     CineHubDbContext _dbContext
-)
+) : IRegisterMappingUseCase
 {
     private readonly IMapping mapping = _mapping;
     private readonly CineHubDbContext dbContext = _dbContext;

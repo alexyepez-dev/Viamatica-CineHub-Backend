@@ -10,23 +10,21 @@ internal sealed class LoginCredentialsValidationUseCase
 (
     CineHubDbContext _dbContext,
     IVerifyHashinPasswordUseCase _useCase
-)
+) : ILoginCredentialsValidationUseCase
 {
     private readonly CineHubDbContext dbContext = _dbContext;
     private readonly IVerifyHashinPasswordUseCase useCase = _useCase;
 
-    public async Task<bool> Validate(LoginCommandRequestDto dto, string passwordHashing)
+    public async Task<bool> Validate(LoginCommandRequestDto dto)
     {
         var emailResult = Email.Create(dto.Email);
         if (!emailResult.IsSuccess) return false;
 
         var email = emailResult.Value;
-        var user = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Email.Value == email.Value);
+        var user = await dbContext.Set<User>().FirstOrDefaultAsync(x => x.Email == email);
 
         if (user is null) return false;
 
-        if (!useCase.Verify(dto.Password, passwordHashing)) return false;
-
-        return true;
+        return useCase.Verify(dto.Password, user.Password);
     }
 }
