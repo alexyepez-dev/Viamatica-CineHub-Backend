@@ -31,4 +31,16 @@ public sealed class Movie : Entity
         int duration
     )
     => new(name, duration);
+
+    public void Update
+    (
+        string name,
+        int duration,
+        MovieStatus status
+    )
+    {
+        Name = name;
+        Duration = duration;
+        Status = status;
+    }
 }

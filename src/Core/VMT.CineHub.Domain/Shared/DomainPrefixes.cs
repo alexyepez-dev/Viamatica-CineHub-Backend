@@ -1,8 +1,8 @@
 ﻿namespace VMT.CineHub.Domain.Shared;
-internal static class DomainPrefixes
+public static class DomainPrefixes
 {
-    internal const string movie = "MV";
-    internal const string movieTheater = "MVTHR";
-    internal const string person = "PRS";
-    internal const string user = "USR";
+    public const string movie = "MV";
+    public const string movieTheater = "MVTHR";
+    public const string person = "PRS";
+    public const string user = "USR";
 }

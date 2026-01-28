@@ -7,7 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="DTOs\Movies\" />
+		<Folder Include="Modules\Movies\GetAllMovies\" />
+		<Folder Include="Modules\Movies\GetMovieById\" />
+		<Folder Include="Modules\Movies\DeleteMovie\" />
+		<Folder Include="Modules\Movies\GetMovieTheaterStatus\" />
+		<Folder Include="Modules\Movies\GetMoviesByRealeaseDate\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using VMT.CineHub.Application.Extension;
 using VMT.CineHub.Persistence.Extension;
 using VMT.CineHub.Security.Extension;
@@ -8,7 +9,12 @@ var configuration = builder.Configuration;
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
-services.AddControllers();
+services.AddControllers()
+        .AddJsonOptions
+        (
+            x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())
+        );
+
 services.AddPersistenceLayer(configuration)
         .AddSecurityLayer(configuration)
         .AddApplicationLayer();

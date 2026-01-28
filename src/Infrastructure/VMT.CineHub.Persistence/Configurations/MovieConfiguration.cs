@@ -13,5 +13,8 @@ internal sealed class MovieConfiguration : IEntityTypeConfiguration<Movie>
                .HasMaxLength(200);
 
         builder.Property(x => x.Duration);
+
+        builder.Property(x => x.Status)
+               .HasConversion<string>();
     }
 }
