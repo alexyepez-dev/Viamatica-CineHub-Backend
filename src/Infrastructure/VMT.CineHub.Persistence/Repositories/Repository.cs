@@ -16,6 +16,9 @@ internal sealed class Repository<T>
 
     public void Delete(T entity) => dbContext.Set<T>().Remove(entity);
 
+    public async Task<List<T>> GetAllAsync(int limit, int offset) => 
+        await dbContext.Set<T>().Skip(offset).Take(limit).ToListAsync();
+
     public async Task<T> GetByAsync(Expression<Func<T, bool>> predicate) => 
         await dbContext.Set<T>().FirstOrDefaultAsync(predicate);
 

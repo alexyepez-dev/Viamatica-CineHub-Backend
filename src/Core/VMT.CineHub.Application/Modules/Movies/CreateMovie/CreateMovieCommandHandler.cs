@@ -18,14 +18,16 @@ internal sealed class CreateMovieCommandHandler
     public async Task<Result<CreateMovieCommandResponseDto>> Execute(CreateMovieCommandRequestDto dto)
     {
         var movieId = Entity.GenerateIdentifier(DomainPrefixes.movie);
+        var slug = Entity.GenerateSlug(dto.Name);
 
         await dbContext.Database.ExecuteSqlRawAsync
         (
-            "EXEC CreateMovie @MovieId, @Name, @Duration, @Status",
+            "EXEC CreateMovie @MovieId, @Name, @Duration, @Status, @Slug",
             new SqlParameter("@MovieId", movieId),
             new SqlParameter("@Name", dto.Name),
             new SqlParameter("@Duration", dto.Duration),
-            new SqlParameter("@Status", MovieStatus.NowPlaying.ToString())
+            new SqlParameter("@Status", MovieStatus.NowPlaying.ToString()),
+            new SqlParameter("@Slug", slug)
         );
 
         var result = new CreateMovieCommandResponseDto($"Movie {dto.Name} successful created.");

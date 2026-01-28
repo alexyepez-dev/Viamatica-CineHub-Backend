@@ -9,6 +9,8 @@ public sealed class Movie : Entity
     public string Name { get; private set; }
     public int Duration { get; private set; }
     public MovieStatus Status { get; private set; }
+    public string Slug { get; private set; }
+    public List<MovieImage> MovieImages { get; private set; }
     public List<MovieMovieTheater> MovieTheaters { get; private set; }
 
 
@@ -22,6 +24,8 @@ public sealed class Movie : Entity
         Name = name;
         Duration = duration;
         Status = MovieStatus.NowPlaying;
+        Slug = GenerateSlug(name);
+        MovieImages = [];
         MovieTheaters = [];
     }
 

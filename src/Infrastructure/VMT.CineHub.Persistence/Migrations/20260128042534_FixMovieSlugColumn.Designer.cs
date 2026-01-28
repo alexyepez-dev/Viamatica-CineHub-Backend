@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VMT.CineHub.Persistence.Database;
 
@@ -11,9 +12,11 @@ using VMT.CineHub.Persistence.Database;
 namespace VMT.CineHub.Persistence.Migrations
 {
     [DbContext(typeof(CineHubDbContext))]
-    partial class CineHubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260128042534_FixMovieSlugColumn")]
+    partial class FixMovieSlugColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -46,27 +49,6 @@ namespace VMT.CineHub.Persistence.Migrations
                     b.HasKey("MovieId");
 
                     b.ToTable("Movie");
-                });
-
-            modelBuilder.Entity("VMT.CineHub.Domain.Entities.MovieImage", b =>
-                {
-                    b.Property<string>("MovieImageId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("MovieId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(5000)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MovieImageId");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("MovieImage");
                 });
 
             modelBuilder.Entity("VMT.CineHub.Domain.Entities.MovieMovieTheater", b =>
@@ -166,15 +148,6 @@ namespace VMT.CineHub.Persistence.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("VMT.CineHub.Domain.Entities.MovieImage", b =>
-                {
-                    b.HasOne("VMT.CineHub.Domain.Entities.Movie", null)
-                        .WithMany("MovieImages")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("VMT.CineHub.Domain.Entities.MovieMovieTheater", b =>
                 {
                     b.HasOne("VMT.CineHub.Domain.Entities.Movie", "Movie")
@@ -207,8 +180,6 @@ namespace VMT.CineHub.Persistence.Migrations
 
             modelBuilder.Entity("VMT.CineHub.Domain.Entities.Movie", b =>
                 {
-                    b.Navigation("MovieImages");
-
                     b.Navigation("MovieTheaters");
                 });
 

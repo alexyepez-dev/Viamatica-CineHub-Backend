@@ -4,6 +4,6 @@ public sealed record SearchMoviesByDateQueryResponseDto
     string MovieId,
     string Name,
     int Duration,
-    string Statusstring,
+    string Status,
     DateTime PublicationDate
 );

@@ -1,0 +1,4 @@
+﻿namespace VMT.CineHub.Application.Modules.MovieMovieTheaters.AssignMovieToMovieTheater;
+internal sealed class AssignMovieToMovieTheaterCommandHandler
+{
+}

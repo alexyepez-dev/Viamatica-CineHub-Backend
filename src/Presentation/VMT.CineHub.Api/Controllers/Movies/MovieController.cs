@@ -2,11 +2,13 @@
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.Movies.CreateMovie;
 using VMT.CineHub.Application.DTOs.Movies.DeleteMovie;
+using VMT.CineHub.Application.DTOs.Movies.GetAllMovies;
 using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
+using VMT.CineHub.Application.Interfaces.Movies.GetAllMovies;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
@@ -66,6 +68,17 @@ public class MovieController : ApiController
     (
         [FromQuery] SearchMoviesByDateQueryRequestDto dto,
         [FromServices] ISearchMoviesByDateQueryHandler handler
+    )
+    => FromResult
+    (
+        await handler.Execute(dto)
+    );
+
+    [HttpGet()]
+    public async Task<IActionResult> SearchMoviesByDate
+    (
+        [FromQuery] GetAllMoviesQueryRequestDto dto,
+        [FromServices] IGetAllMoviesQueryHandler handler
     )
     => FromResult
     (

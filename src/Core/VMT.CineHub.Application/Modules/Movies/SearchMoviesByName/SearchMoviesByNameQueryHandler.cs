@@ -21,6 +21,7 @@ internal sealed class SearchMoviesByNameQueryHandler
                 x => EF.Functions.Like(x.Name, $"%{dto.Name.Trim()}%") &&
                 x.Status != Domain.Enums.MovieStatus.Deleted
             )
+            .Include(x => x.MovieImages)
             .Select
             (
                 x => new SearchMoviesByNameQueryResponseDto
@@ -28,6 +29,10 @@ internal sealed class SearchMoviesByNameQueryHandler
                     x.MovieId,
                     x.Name,
                     x.Duration,
+                    x.MovieImages
+                    .Select(img => img.Url)
+                    .ToList(),
+                    x.Slug,
                     x.Status.ToString()
                 )
             )
