@@ -6,14 +6,12 @@ using VMT.CineHub.Security.Extension;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+var jsonConvertEnum = new JsonStringEnumConverter();
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 services.AddControllers()
-        .AddJsonOptions
-        (
-            x => x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter())
-        );
+        .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(jsonConvertEnum));
 
 services.AddPersistenceLayer(configuration)
         .AddSecurityLayer(configuration)
