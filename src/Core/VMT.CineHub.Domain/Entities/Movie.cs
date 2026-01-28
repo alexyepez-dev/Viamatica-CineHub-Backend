@@ -43,4 +43,6 @@ public sealed class Movie : Entity
         Duration = duration;
         Status = status;
     }
+
+    public void ChangeStatusToDeleted() => Status = MovieStatus.Deleted;
 }

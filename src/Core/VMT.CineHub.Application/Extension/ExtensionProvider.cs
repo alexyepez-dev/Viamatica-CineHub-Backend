@@ -5,6 +5,8 @@ using VMT.CineHub.Application.Interfaces.Authentication.Login;
 using VMT.CineHub.Application.Interfaces.Authentication.Register;
 using VMT.CineHub.Application.Interfaces.Mappers;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
+using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
+using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
 using VMT.CineHub.Application.Interfaces.UseCases;
@@ -12,6 +14,8 @@ using VMT.CineHub.Application.Mappers;
 using VMT.CineHub.Application.Modules.Authentication.Login;
 using VMT.CineHub.Application.Modules.Authentication.Register;
 using VMT.CineHub.Application.Modules.Movies.CreateMovie;
+using VMT.CineHub.Application.Modules.Movies.DeleteMovie;
+using VMT.CineHub.Application.Modules.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Modules.Movies.UpdateMovie;
 using VMT.CineHub.Application.UseCases;
@@ -30,12 +34,15 @@ public static class ExtensionProvider
         services.AddScoped<IVerifyHashinPasswordUseCase, VerifyHashinPasswordUseCase>();
         services.AddScoped<IRegisterCredentialsValidationUseCase, RegisterCredentialsValidationUseCase>();
         services.AddScoped<ILoginCredentialsValidationUseCase, LoginCredentialsValidationUseCase>();
+        services.AddScoped<IValidateDateUseCase, ValidateDateUseCase>();
 
         services.AddTransient<ILoginCommandHandler, LoginCommandHandler>();
         services.AddTransient<IRegisterCommandHandler, RegisterCommandHandler>();
         services.AddTransient<ICreateMovieCommandHandler, CreateMovieCommandHandler>();
         services.AddTransient<ISearchMoviesByNameQueryHandler, SearchMoviesByNameQueryHandler>();
         services.AddTransient<IUpdateMovieCommandHandler, UpdateMovieCommandHandler>();
+        services.AddTransient<IDeleteMovieCommandHandler, DeleteMovieCommandHandler>();
+        services.AddTransient<ISearchMoviesByDateQueryHandler, SearchMoviesByDateQueryHandler>();
 
         return services;
     }

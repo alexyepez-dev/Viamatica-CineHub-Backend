@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.Movies.CreateMovie;
+using VMT.CineHub.Application.DTOs.Movies.DeleteMovie;
+using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
+using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
+using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
 
@@ -23,7 +27,7 @@ public class MovieController : ApiController
         await handler.Execute(dto)
     );
 
-    [HttpPatch()]
+    [HttpPatch]
     public async Task<IActionResult> UpdateMovie
     (
         [FromBody] UpdateMovieCommandRequestDto dto,
@@ -35,11 +39,33 @@ public class MovieController : ApiController
         await handler.Execute(dto, movieId)
     );
 
+    [HttpDelete]
+    public async Task<IActionResult> DeleteMovie
+    (
+        [FromQuery] DeleteMovieCommandRequestDto dto,
+        [FromServices] IDeleteMovieCommandHandler handler
+    )
+    => FromResult
+    (
+        await handler.Execute(dto)
+    );
+
     [HttpGet("search")]
     public async Task<IActionResult> SearchMoviesByName
     (
         [FromQuery] SearchMoviesByNameQueryRequestDto dto,
         [FromServices] ISearchMoviesByNameQueryHandler handler
+    )
+    => FromResult
+    (
+        await handler.Execute(dto)
+    );
+
+    [HttpGet("by-date")]
+    public async Task<IActionResult> SearchMoviesByDate
+    (
+        [FromQuery] SearchMoviesByDateQueryRequestDto dto,
+        [FromServices] ISearchMoviesByDateQueryHandler handler
     )
     => FromResult
     (

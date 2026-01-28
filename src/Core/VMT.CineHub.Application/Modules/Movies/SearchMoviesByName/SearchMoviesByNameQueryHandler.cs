@@ -17,7 +17,7 @@ internal sealed class SearchMoviesByNameQueryHandler
     public async Task<Result<List<SearchMoviesByNameQueryResponseDto>>> Execute(SearchMoviesByNameQueryRequestDto dto)
     {
         var movies = await dbContext.Set<Movie>()
-            .Where(x => EF.Functions.Like(x.Name, $"%{dto.Name.Trim()}%"))
+            .Where(x => EF.Functions.Like(x.Name, $"%{dto.Name.Trim()}%") && x.Status != Domain.Enums.MovieStatus.Deleted)
             .Select
             (
                 x => new SearchMoviesByNameQueryResponseDto
