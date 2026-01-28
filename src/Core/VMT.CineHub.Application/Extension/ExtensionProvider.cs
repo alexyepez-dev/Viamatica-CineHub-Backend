@@ -9,6 +9,7 @@ using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
+using VMT.CineHub.Application.Interfaces.MovieTheaters.GetMoviesTheaterStatus;
 using VMT.CineHub.Application.Interfaces.UseCases;
 using VMT.CineHub.Application.Mappers;
 using VMT.CineHub.Application.Modules.Authentication.Login;
@@ -18,6 +19,7 @@ using VMT.CineHub.Application.Modules.Movies.DeleteMovie;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Modules.Movies.UpdateMovie;
+using VMT.CineHub.Application.Modules.MovieTheaters.GetMoviesTheaterStatus;
 using VMT.CineHub.Application.UseCases;
 
 namespace VMT.CineHub.Application.Extension;
@@ -43,6 +45,7 @@ public static class ExtensionProvider
         services.AddTransient<IUpdateMovieCommandHandler, UpdateMovieCommandHandler>();
         services.AddTransient<IDeleteMovieCommandHandler, DeleteMovieCommandHandler>();
         services.AddTransient<ISearchMoviesByDateQueryHandler, SearchMoviesByDateQueryHandler>();
+        services.AddTransient<IGetMoviesTheaterStatusQueryHandler, GetMoviesTheaterStatusQueryHandler>();
 
         return services;
     }

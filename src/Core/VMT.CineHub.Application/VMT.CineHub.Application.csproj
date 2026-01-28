@@ -7,9 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Folder Include="Modules\MovieMovieTheater\AssignMovieToMovieTheater\" />
+		<Folder Include="Modules\MovieMovieTheater\NewFolder\" />
 		<Folder Include="Modules\Movies\GetAllMovies\" />
-		<Folder Include="Modules\Movies\GetMovieById\" />
-		<Folder Include="Modules\Movies\GetMovieTheaterStatus\" />
+		<Folder Include="Modules\MovieTheaters\CreateMovieTheater\" />
 	</ItemGroup>
 
 	<ItemGroup>

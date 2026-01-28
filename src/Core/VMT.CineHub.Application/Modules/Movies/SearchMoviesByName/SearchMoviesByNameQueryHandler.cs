@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Domain.Entities;
@@ -17,7 +16,11 @@ internal sealed class SearchMoviesByNameQueryHandler
     public async Task<Result<List<SearchMoviesByNameQueryResponseDto>>> Execute(SearchMoviesByNameQueryRequestDto dto)
     {
         var movies = await dbContext.Set<Movie>()
-            .Where(x => EF.Functions.Like(x.Name, $"%{dto.Name.Trim()}%") && x.Status != Domain.Enums.MovieStatus.Deleted)
+            .Where
+            (
+                x => EF.Functions.Like(x.Name, $"%{dto.Name.Trim()}%") &&
+                x.Status != Domain.Enums.MovieStatus.Deleted
+            )
             .Select
             (
                 x => new SearchMoviesByNameQueryResponseDto
