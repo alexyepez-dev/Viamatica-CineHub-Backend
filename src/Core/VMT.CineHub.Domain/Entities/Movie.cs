@@ -7,6 +7,7 @@ public sealed class Movie : Entity
 {
     public string MovieId { get; private set; }
     public string Name { get; private set; }
+    public string Description { get; private set; }
     public int Duration { get; private set; }
     public MovieStatus Status { get; private set; }
     public string Slug { get; private set; }
@@ -17,11 +18,13 @@ public sealed class Movie : Entity
     private Movie
     (
         string name,
+        string description,
         int duration
     )
     {
         MovieId = GenerateIdentifier(DomainPrefixes.movie);
         Name = name;
+        Description = description;
         Duration = duration;
         Status = MovieStatus.NowPlaying;
         Slug = GenerateSlug(name);
@@ -32,9 +35,10 @@ public sealed class Movie : Entity
     public static Movie Create
     (
         string name,
+        string description,
         int duration
     )
-    => new(name, duration);
+    => new(name, description, duration);
 
     public void Update
     (

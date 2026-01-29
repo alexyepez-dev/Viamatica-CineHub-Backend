@@ -9,6 +9,7 @@ using VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
 using VMT.CineHub.Application.Interfaces.Movies.GetAllMovies;
+using VMT.CineHub.Application.Interfaces.Movies.GetMovieBySlug;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
@@ -63,15 +64,26 @@ public class MovieController : ApiController
         await handler.Execute(dto)
     );
 
-    [HttpGet("by-date")]
+    [HttpGet("{slug}")]
+    public async Task<IActionResult> SearchMoviesByName
+    (
+        string slug,
+        [FromServices] IGetMovieBySlugQueryHandler handler
+    )
+    => FromResult
+    (
+        await handler.Execute(slug)
+    );
+
+    [HttpGet("by-date/{date}")]
     public async Task<IActionResult> SearchMoviesByDate
     (
-        [FromQuery] SearchMoviesByDateQueryRequestDto dto,
+        string date,
         [FromServices] ISearchMoviesByDateQueryHandler handler
     )
     => FromResult
     (
-        await handler.Execute(dto)
+        await handler.Execute(date)
     );
 
     [HttpGet()]

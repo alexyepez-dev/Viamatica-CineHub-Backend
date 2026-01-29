@@ -9,9 +9,11 @@ using VMT.CineHub.Application.Interfaces.MovieImages.AssignImageToMovie;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
 using VMT.CineHub.Application.Interfaces.Movies.GetAllMovies;
+using VMT.CineHub.Application.Interfaces.Movies.GetMovieBySlug;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
+using VMT.CineHub.Application.Interfaces.MovieTheaters.GetAllMovieTheaters;
 using VMT.CineHub.Application.Interfaces.MovieTheaters.GetMoviesTheaterStatus;
 using VMT.CineHub.Application.Interfaces.UseCases;
 using VMT.CineHub.Application.Mappers;
@@ -22,9 +24,11 @@ using VMT.CineHub.Application.Modules.MovieImages.AssignImageToMovie;
 using VMT.CineHub.Application.Modules.Movies.CreateMovie;
 using VMT.CineHub.Application.Modules.Movies.DeleteMovie;
 using VMT.CineHub.Application.Modules.Movies.GetAllMovies;
+using VMT.CineHub.Application.Modules.Movies.GetMovieBySlug;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Modules.Movies.UpdateMovie;
+using VMT.CineHub.Application.Modules.MovieTheaters.GetAllMovieTheaters;
 using VMT.CineHub.Application.Modules.MovieTheaters.GetMoviesTheaterStatus;
 using VMT.CineHub.Application.UseCases;
 
@@ -55,6 +59,8 @@ public static class ExtensionProvider
         services.AddTransient<IGetDashboardQueryHandler, GetDashboardQueryHandler>();
         services.AddTransient<IGetAllMoviesQueryHandler, GetAllMoviesQueryHandler>();
         services.AddTransient<IAssignImageToMovieCommandHandler, AssignImageToMovieCommandHandler>();
+        services.AddTransient<IGetAllMovieTheatersQueryHandler, GetAllMovieTheatersQueryHandler>();
+        services.AddTransient<IGetMovieBySlugQueryHandler, GetMovieBySlugQueryHandler>();
 
         return services;
     }

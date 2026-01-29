@@ -2,6 +2,7 @@
 public enum MovieStatus
 {
     NowPlaying,
+    Active,
     NotAvailable,
     Deleted
 }

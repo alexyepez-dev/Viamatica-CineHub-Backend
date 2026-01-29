@@ -8,8 +8,8 @@
 
 	<ItemGroup>
 		<Folder Include="DTOs\MovieMovieTheater\AssignMovieToMovieTheater\" />
+		<Folder Include="DTOs\MovieTheaters\CreateMovie\" />
 		<Folder Include="Modules\MovieMovieTheaters\NewFolder\" />
-		<Folder Include="Modules\MovieTheaters\CreateMovieTheater\" />
 	</ItemGroup>
 
 	<ItemGroup>

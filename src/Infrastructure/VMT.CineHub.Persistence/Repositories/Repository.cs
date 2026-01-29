@@ -19,6 +19,8 @@ internal sealed class Repository<T>
     public async Task<List<T>> GetAllAsync(int limit, int offset) => 
         await dbContext.Set<T>().Skip(offset).Take(limit).ToListAsync();
 
+    public async Task<List<T>> GetAllAsync() => await dbContext.Set<T>().ToListAsync();
+
     public async Task<T> GetByAsync(Expression<Func<T, bool>> predicate) => 
         await dbContext.Set<T>().FirstOrDefaultAsync(predicate);
 

@@ -14,10 +14,10 @@ internal sealed class GetMoviesTheaterStatusQueryHandler
 {
     private readonly CineHubDbContext dbContext = _dbContext;
 
-    public async Task<Result<GetMovieTheaterStatusQueryResponseDto>> Execute(GetMovieTheaterStatusQueryRequestDto dto)
+    public async Task<Result<GetMovieTheaterStatusQueryResponseDto>> Execute(string name)
     {
         var movieTheater = await dbContext.Set<MovieTheater>()
-            .Where(x => x.Name == dto.Name)
+            .Where(x => x.Name == name)
             .Select
             (
                 theater => new
@@ -31,7 +31,7 @@ internal sealed class GetMoviesTheaterStatusQueryHandler
 
         if (movieTheater is null) return Result<GetMovieTheaterStatusQueryResponseDto>.Fail
         (
-            $"Movie theater {dto.Name} not found.",
+            $"Movie theater {name} not found.",
             ErrorType.NotFound
         );
 

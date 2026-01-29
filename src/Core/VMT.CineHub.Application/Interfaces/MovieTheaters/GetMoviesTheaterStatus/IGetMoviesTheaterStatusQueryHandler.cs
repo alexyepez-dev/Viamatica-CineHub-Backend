@@ -4,5 +4,5 @@ using VMT.CineHub.Domain.Shared;
 namespace VMT.CineHub.Application.Interfaces.MovieTheaters.GetMoviesTheaterStatus;
 public interface IGetMoviesTheaterStatusQueryHandler
 {
-    Task<Result<GetMovieTheaterStatusQueryResponseDto>> Execute(GetMovieTheaterStatusQueryRequestDto dto);
+    Task<Result<GetMovieTheaterStatusQueryResponseDto>> Execute(string name);
 }

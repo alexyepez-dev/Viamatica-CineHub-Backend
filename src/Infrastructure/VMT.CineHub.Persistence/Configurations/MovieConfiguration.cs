@@ -12,6 +12,9 @@ internal sealed class MovieConfiguration : IEntityTypeConfiguration<Movie>
         builder.Property(x => x.Name)
                .HasMaxLength(200);
 
+        builder.Property(x => x.Description)
+               .HasMaxLength(3000);
+
         builder.Property(x => x.Duration);
 
         builder.Property(x => x.Status)

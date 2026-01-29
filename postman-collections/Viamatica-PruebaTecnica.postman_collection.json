@@ -1,0 +1,178 @@
+{
+  "info": {
+    "_postman_id": "72ff97d9-7b14-499d-a9d7-c09c45949f52",
+    "name": "Viamatica-PruebaTecnica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49413576"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\": \"alexyepez.ec\",\r\n    \"email\": \"progr.code0718@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7124/api/auth/login",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7124",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"dni\": \"0958095697\",\r\n    \"names\": \"Alex Daniel\",\r\n    \"surnames\": \"Yepez Zuñiga\",\r\n    \"username\": \"alexyepez.ec\",\r\n    \"email\": \"progr.code0718@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7124/api/auth/register",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7124",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movies",
+      "item": [
+        {
+          "name": "CreateMovie",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Green lanterns\",\r\n    \"duration\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7124/api/movies",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7124",
+              "path": [
+                "api",
+                "movies"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "SearchMovies",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Spiderman: Brand new Day\",\r\n    \"duration\": 2\r\n}"
+            },
+            "url": {
+              "raw": "https://localhost:7124/api/movies/search?name=s",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7124",
+              "path": [
+                "api",
+                "movies",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "s"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdateMovie",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Spiderman: Brand new Day\",\r\n    \"duration\": 2,\r\n    \"status\": \"NowPlaying\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://localhost:7124/api/movies?movieId=MV_01KG0VKCARJ3GPJE2NVAPAG8FT",
+              "protocol": "https",
+              "host": [
+                "localhost"
+              ],
+              "port": "7124",
+              "path": [
+                "api",
+                "movies"
+              ],
+              "query": [
+                {
+                  "key": "movieId",
+                  "value": "MV_01KG0VKCARJ3GPJE2NVAPAG8FT"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
