@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using VMT.CineHub.Api.Extension;
 using VMT.CineHub.Application.Extension;
 using VMT.CineHub.Middlewares.Middlewares;
 using VMT.CineHub.Persistence.Database;
@@ -27,9 +28,12 @@ services.AddCors
 services.AddControllers()
         .AddJsonOptions(x => x.JsonSerializerOptions.Converters.Add(jsonConvertEnum));
 
-services.AddPersistenceLayer(configuration)
+services.AddWebApiLayer()
+        .AddPersistenceLayer(configuration)
         .AddSecurityLayer(configuration)
         .AddApplicationLayer();
+
+services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -46,6 +50,8 @@ app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseRouting();
 app.UseCors("Angular");
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

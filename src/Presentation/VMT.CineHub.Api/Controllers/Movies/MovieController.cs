@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.Movies.CreateMovie;
 using VMT.CineHub.Application.DTOs.Movies.DeleteMovie;
 using VMT.CineHub.Application.DTOs.Movies.GetAllMovies;
-using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.DTOs.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
@@ -16,6 +16,7 @@ using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
 
 namespace VMT.CineHub.Api.Controllers.Movies;
 
+[Authorize]
 [Route("api/movies")]
 public class MovieController : ApiController
 {

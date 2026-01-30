@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.MovieTheaters.CreateMovie;
 using VMT.CineHub.Application.DTOs.MovieTheaters.UpdateMovieTheater;
@@ -10,6 +11,7 @@ using VMT.CineHub.Application.Interfaces.MovieTheaters.UpdateMovieTheater;
 
 namespace VMT.CineHub.Api.Controllers.MovieTheaters;
 
+[Authorize]
 [Route("api/movie-theaters")]
 public class MovieTheatersController : ApiController
 {
