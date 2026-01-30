@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.MovieImages.AssignImageToMovie;
 using VMT.CineHub.Application.Interfaces.MovieImages.AssignImageToMovie;
 
 namespace VMT.CineHub.Api.Controllers.MovieImages;
 
+[Authorize]
 [Route("api/movie-images")]
 public class MovieImagesController : ApiController
 {

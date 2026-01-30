@@ -18,11 +18,11 @@ internal sealed class AssignImageToMovieCommandHandler
     private readonly IRepository<MovieImage> movieImageRepository = _movieImageRepository;
     private readonly CineHubDbContext dbContext = _dbContext;
 
-    public async Task<Result<string>> Execute(string movieId, AssignImageToMovieCommandRequestDto dto)
+    public async Task<Result<AssignImageToMovieCommandResponseDto>> Execute(string movieId, AssignImageToMovieCommandRequestDto dto)
     {
         var movie = await movieRepository.GetByAsync(x => x.MovieId == movieId);
 
-        if (movie is null) return Result<string>.Fail
+        if (movie is null) return Result<AssignImageToMovieCommandResponseDto>.Fail
         (
             $"We're sorry, movie with id {movieId} not found.",
             ErrorType.NotFound
@@ -33,6 +33,7 @@ internal sealed class AssignImageToMovieCommandHandler
         await movieImageRepository.AddAsync(movieImage);
         await dbContext.SaveChangesAsync();
 
-        return Result<string>.Ok("adding successful image to movie.");
+        var result = new AssignImageToMovieCommandResponseDto("adding successful image to movie.");
+        return Result<AssignImageToMovieCommandResponseDto>.Ok(result);
     }
 }

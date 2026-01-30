@@ -25,4 +25,8 @@
     <ProjectReference Include="..\VMT.CineHub.Middlewares\VMT.CineHub.Middlewares.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extension\" />
+  </ItemGroup>
+
 </Project>

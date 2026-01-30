@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using VMT.CineHub.Api.Abstractions;
 using VMT.CineHub.Application.DTOs.Authentication.Login;
 using VMT.CineHub.Application.DTOs.Authentication.Register;
@@ -7,6 +8,7 @@ using VMT.CineHub.Application.Interfaces.Authentication.Register;
 
 namespace VMT.CineHub.Api.Controllers.Authentication;
 
+[AllowAnonymous]
 [Route("api/auth")]
 public class AuthController : ApiController
 {

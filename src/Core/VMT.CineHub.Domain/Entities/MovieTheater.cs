@@ -26,4 +26,10 @@ public sealed class MovieTheater : Entity
         string name
     )
     => new(name);
+
+    public void Update
+    (
+        string name
+    )
+    => Name = name;
 }
