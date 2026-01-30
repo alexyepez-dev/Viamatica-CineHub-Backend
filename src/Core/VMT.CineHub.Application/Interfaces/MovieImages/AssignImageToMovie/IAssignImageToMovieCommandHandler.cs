@@ -5,5 +5,5 @@ namespace VMT.CineHub.Application.Interfaces.MovieImages.AssignImageToMovie;
 
 public interface IAssignImageToMovieCommandHandler
 {
-    Task<Result<string>> Execute(string movieId, AssignImageToMovieCommandRequestDto dto);
+    Task<Result<AssignImageToMovieCommandResponseDto>> Execute(string movieId, AssignImageToMovieCommandRequestDto dto);
 }
