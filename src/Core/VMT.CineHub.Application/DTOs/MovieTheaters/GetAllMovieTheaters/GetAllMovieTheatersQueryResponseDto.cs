@@ -2,6 +2,7 @@
 
 public sealed record GetAllMovieTheatersQueryResponseDto
 (
+    string MovieTheaterId,
     string Name,
     string Status
 );

@@ -26,7 +26,7 @@ internal sealed class GetAllMovieTheatersQueryHandler
 
         var result = movieTheaters.Select
         (
-            x => new GetAllMovieTheatersQueryResponseDto(x.Name, x.Status.ToString())
+            x => new GetAllMovieTheatersQueryResponseDto(x.MovieTheaterId, x.Name, x.Status.ToString())
         ).ToList();
 
         return Result<List<GetAllMovieTheatersQueryResponseDto>>.Ok(result);

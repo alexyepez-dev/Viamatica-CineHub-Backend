@@ -13,8 +13,11 @@ using VMT.CineHub.Application.Interfaces.Movies.GetMovieBySlug;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Interfaces.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Interfaces.Movies.UpdateMovie;
+using VMT.CineHub.Application.Interfaces.MovieTheaters.CreateMovieTheater;
+using VMT.CineHub.Application.Interfaces.MovieTheaters.DeleteMovieTheater;
 using VMT.CineHub.Application.Interfaces.MovieTheaters.GetAllMovieTheaters;
 using VMT.CineHub.Application.Interfaces.MovieTheaters.GetMoviesTheaterStatus;
+using VMT.CineHub.Application.Interfaces.MovieTheaters.UpdateMovieTheater;
 using VMT.CineHub.Application.Interfaces.UseCases;
 using VMT.CineHub.Application.Mappers;
 using VMT.CineHub.Application.Modules.Authentication.Login;
@@ -28,8 +31,11 @@ using VMT.CineHub.Application.Modules.Movies.GetMovieBySlug;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByDate;
 using VMT.CineHub.Application.Modules.Movies.SearchMoviesByName;
 using VMT.CineHub.Application.Modules.Movies.UpdateMovie;
+using VMT.CineHub.Application.Modules.MovieTheaters.CreateMovieTheater;
+using VMT.CineHub.Application.Modules.MovieTheaters.DeleteMovieTheater;
 using VMT.CineHub.Application.Modules.MovieTheaters.GetAllMovieTheaters;
 using VMT.CineHub.Application.Modules.MovieTheaters.GetMoviesTheaterStatus;
+using VMT.CineHub.Application.Modules.MovieTheaters.UpdateMovieTheater;
 using VMT.CineHub.Application.UseCases;
 
 namespace VMT.CineHub.Application.Extension;
@@ -61,6 +67,9 @@ public static class ExtensionProvider
         services.AddTransient<IAssignImageToMovieCommandHandler, AssignImageToMovieCommandHandler>();
         services.AddTransient<IGetAllMovieTheatersQueryHandler, GetAllMovieTheatersQueryHandler>();
         services.AddTransient<IGetMovieBySlugQueryHandler, GetMovieBySlugQueryHandler>();
+        services.AddTransient<ICreateMovieTheaterCommandHandler, CreateMovieTheaterCommandHandler>();
+        services.AddTransient<IUpdateMovieTheaterCommandHandler, UpdateMovieTheaterCommandHandler>();
+        services.AddTransient<IDeleteMovieTheaterCommandHandler, DeleteMovieTheaterCommandHandler>();
 
         return services;
     }
