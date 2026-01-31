@@ -36,7 +36,7 @@ public sealed class GlobalExceptionMiddleware
         var response = new ErrorResponse
         (
             context.Response.StatusCode,
-            "We're sorry, ocurred error server.",
+            "We're sorry, occurred error server.",
             exception.Message
         );
 

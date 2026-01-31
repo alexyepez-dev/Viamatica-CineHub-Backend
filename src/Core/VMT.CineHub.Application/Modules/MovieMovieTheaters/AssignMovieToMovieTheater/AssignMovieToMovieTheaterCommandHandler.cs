@@ -69,11 +69,16 @@ internal sealed class AssignMovieToMovieTheaterCommandHandler
 
         var countMovieAssignToMovieTheater = await dbContext.Set<MovieMovieTheater>().CountAsync(x => x.MovieTheaterId == dto.MovieTheaterId);
 
-        if(countMovieAssignToMovieTheater >= 6) return Result<AssignMovieToMovieTheaterCommandResponseDto>.Fail
-        (
-            "The movie theater already has the maximum capacity of movies (6).",
-            ErrorType.Validation
-        );
+        if (countMovieAssignToMovieTheater >= 6)
+        {
+            movieTheater.ChangeStatus(MovieTheaterStatus.NotAvailable);
+
+            return Result<AssignMovieToMovieTheaterCommandResponseDto>.Fail
+            (
+                "The movie theater already has the maximum capacity of movies (6).",
+                ErrorType.Validation
+            );
+        }
 
         await movieMovieTheaterRepository.AddAsync(assignment);
         await dbContext.SaveChangesAsync();
