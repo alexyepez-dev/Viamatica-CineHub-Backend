@@ -14,7 +14,19 @@ public static class ExtensionProvider
         IConfigurationManager configuration
     )
     {
-        services.AddDbContext<CineHubDbContext>(x => x.UseSqlServer(configuration["ConnectionStrings:SqlServer"]));
+        services.AddDbContext<CineHubDbContext>
+        (
+            x => x.UseSqlServer
+            (
+                configuration["ConnectionStrings:SqlServer"],
+                opt => opt.EnableRetryOnFailure
+                (
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(10),
+                    errorNumbersToAdd: null
+                )
+            )
+        );
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
         return services;

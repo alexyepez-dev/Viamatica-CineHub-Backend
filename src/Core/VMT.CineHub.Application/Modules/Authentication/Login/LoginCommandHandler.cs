@@ -36,7 +36,13 @@ internal sealed class LoginCommandHandler
             ErrorType.Validation
         );
 
-        var result = new LoginCommandResponseDto(accessToken.GenerateToken(credentials));
+        var result = new LoginCommandResponseDto
+        (
+            dto.Username,
+            dto.Email,
+            accessToken.GenerateToken(credentials)
+        );
+
         return Result<LoginCommandResponseDto>.Ok(result);
     }
 }

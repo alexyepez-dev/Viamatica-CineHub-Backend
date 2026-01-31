@@ -41,9 +41,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<CineHubDbContext>();
-    db.Database.Migrate();
+    app.ApplyMigrationsWithRetry();
 }
 
 app.UseMiddleware<GlobalExceptionMiddleware>();

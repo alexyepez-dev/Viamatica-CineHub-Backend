@@ -1,4 +1,6 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using VMT.CineHub.Persistence.Database;
 
 namespace VMT.CineHub.Api.Extension;
 
@@ -45,5 +47,14 @@ public static class ExtensionProvider
         );
 
         return services;
+    }
+
+    public static void ApplyMigrationsWithRetry(this IApplicationBuilder app)
+    {
+        using var scope = app.ApplicationServices.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<CineHubDbContext>();
+        var strategy = db.Database.CreateExecutionStrategy();
+
+        strategy.Execute(() => db.Database.Migrate());
     }
 }
