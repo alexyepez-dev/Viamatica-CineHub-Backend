@@ -1,9 +1,7 @@
-using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using VMT.CineHub.Api.Extension;
 using VMT.CineHub.Application.Extension;
 using VMT.CineHub.Middlewares.Middlewares;
-using VMT.CineHub.Persistence.Database;
 using VMT.CineHub.Persistence.Extension;
 using VMT.CineHub.Security.Extension;
 

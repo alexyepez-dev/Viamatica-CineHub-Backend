@@ -18,7 +18,8 @@ internal sealed class TokenConstruction
     public List<Claim> GetClaims(User user) =>
     [
         new Claim(ClaimTypes.NameIdentifier, user.UserId),
-        new Claim("username", user.Username)
+        new Claim("username", user.Username),
+        new Claim(ClaimTypes.Email, user.Email.Value)
     ];
 
     public SymmetricSecurityKey GetSecurityKey() => new(Encoding.UTF8.GetBytes(settings.Key));
