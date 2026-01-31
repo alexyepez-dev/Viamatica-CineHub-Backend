@@ -6,6 +6,7 @@ using VMT.CineHub.Application.Interfaces.Authentication.Register;
 using VMT.CineHub.Application.Interfaces.Dashboard;
 using VMT.CineHub.Application.Interfaces.Mappers;
 using VMT.CineHub.Application.Interfaces.MovieImages.AssignImageToMovie;
+using VMT.CineHub.Application.Interfaces.MovieMovieTheaters.AssignMovieToMovieTheater;
 using VMT.CineHub.Application.Interfaces.Movies.CreateMovie;
 using VMT.CineHub.Application.Interfaces.Movies.DeleteMovie;
 using VMT.CineHub.Application.Interfaces.Movies.GetAllMovies;
@@ -24,6 +25,7 @@ using VMT.CineHub.Application.Modules.Authentication.Login;
 using VMT.CineHub.Application.Modules.Authentication.Register;
 using VMT.CineHub.Application.Modules.Dashboard;
 using VMT.CineHub.Application.Modules.MovieImages.AssignImageToMovie;
+using VMT.CineHub.Application.Modules.MovieMovieTheaters.AssignMovieToMovieTheater;
 using VMT.CineHub.Application.Modules.Movies.CreateMovie;
 using VMT.CineHub.Application.Modules.Movies.DeleteMovie;
 using VMT.CineHub.Application.Modules.Movies.GetAllMovies;
@@ -70,6 +72,7 @@ public static class ExtensionProvider
         services.AddTransient<ICreateMovieTheaterCommandHandler, CreateMovieTheaterCommandHandler>();
         services.AddTransient<IUpdateMovieTheaterCommandHandler, UpdateMovieTheaterCommandHandler>();
         services.AddTransient<IDeleteMovieTheaterCommandHandler, DeleteMovieTheaterCommandHandler>();
+        services.AddTransient<IAssignMovieToMovieTheaterCommandHandler, AssignMovieToMovieTheaterCommandHandler>();
 
         return services;
     }

@@ -32,4 +32,6 @@ public sealed class MovieTheater : Entity
         string name
     )
     => Name = name;
+
+    public void ChangeStatus(MovieTheaterStatus status) => Status = status;
 }

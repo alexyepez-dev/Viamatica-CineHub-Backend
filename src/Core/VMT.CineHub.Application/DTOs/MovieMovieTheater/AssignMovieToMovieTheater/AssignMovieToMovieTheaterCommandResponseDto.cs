@@ -1,0 +1,3 @@
+namespace VMT.CineHub.Application.DTOs.MovieMovieTheater.AssignMovieToMovieTheater;
+
+public sealed record AssignMovieToMovieTheaterCommandResponseDto(string Message);
