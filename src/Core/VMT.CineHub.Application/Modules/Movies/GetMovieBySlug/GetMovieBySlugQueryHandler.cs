@@ -18,13 +18,13 @@ internal sealed class GetMovieBySlugQueryHandler
     private readonly IRepository<Movie> repository = _repository;
     private readonly CineHubDbContext dbContext = _dbContext;
 
-    public async Task<Result<GetMovieByIdQueryResponseDto>> Execute(string slug)
+    public async Task<Result<GetMovieByIdQueryResponseDto>> Execute(string idSlug)
     {
-        var movie = await dbContext.Set<Movie>().Include(x => x.MovieImages).FirstOrDefaultAsync(x => x.Slug == slug);
+        var movie = await dbContext.Set<Movie>().Include(x => x.MovieImages).FirstOrDefaultAsync(x => x.Slug == idSlug || x.MovieId == idSlug);
 
         if(movie is null) return Result<GetMovieByIdQueryResponseDto>.Fail
         (
-            $"We're sorry, movie with id or slug {slug}",
+            $"We're sorry, movie with id or slug {idSlug}",
             ErrorType.NotFound
         );
 

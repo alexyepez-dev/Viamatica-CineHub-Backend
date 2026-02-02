@@ -31,11 +31,11 @@ public class MovieController : ApiController
         await handler.Execute(dto)
     );
 
-    [HttpPatch]
+    [HttpPatch("{movieId}")]
     public async Task<IActionResult> UpdateMovie
     (
         [FromBody] UpdateMovieCommandRequestDto dto,
-        [FromQuery] string movieId,
+        string movieId,
         [FromServices] IUpdateMovieCommandHandler handler
     )
     => FromResult

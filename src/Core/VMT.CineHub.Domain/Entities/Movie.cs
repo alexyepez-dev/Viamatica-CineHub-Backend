@@ -18,15 +18,16 @@ public sealed class Movie : Entity
     private Movie
     (
         string name,
+        int duration,
         string description,
-        int duration
+        MovieStatus status
     )
     {
         MovieId = GenerateIdentifier(DomainPrefixes.movie);
         Name = name;
         Description = description;
         Duration = duration;
-        Status = MovieStatus.NowPlaying;
+        Status = status;
         Slug = GenerateSlug(name);
         MovieImages = [];
         MovieTheaters = [];
@@ -35,20 +36,23 @@ public sealed class Movie : Entity
     public static Movie Create
     (
         string name,
+        int duration,
         string description,
-        int duration
+        MovieStatus status
     )
-    => new(name, description, duration);
+    => new(name, duration, description, status);
 
     public void Update
     (
         string name,
         int duration,
+        string description,
         MovieStatus status
     )
     {
         Name = name;
         Duration = duration;
+        Description = description;
         Status = status;
     }
 

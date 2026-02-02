@@ -2,12 +2,13 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: cinehub-db
+    restart: always
     ports:
       - "1433:1433"
     environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=SqlServerPassword123!
-      - MSSQL_PID=Developer
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: ${DB_PASSWORD}
+      MSSQL_PID: Developer
     volumes:
       - sql_data:/var/opt/mssql
 

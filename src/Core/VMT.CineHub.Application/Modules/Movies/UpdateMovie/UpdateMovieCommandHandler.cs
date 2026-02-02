@@ -30,6 +30,7 @@ internal sealed class UpdateMovieCommandHandler
         (
             dto.Name,
             dto.Duration,
+            dto.Description,
             dto.Status
         );
 

@@ -16,6 +16,7 @@
 		<Folder Include="Interfaces\MovieTheaters\UpdateMovieTheater\" />
 		<Folder Include="Modules\MovieTheaters\DeleteMovieTheater\" />
 		<Folder Include="Modules\MovieTheaters\UpdateMovieTheater\" />
+		<Folder Include="Validations\Movies\CreateMovie\" />
 	</ItemGroup>
 
 	<ItemGroup>

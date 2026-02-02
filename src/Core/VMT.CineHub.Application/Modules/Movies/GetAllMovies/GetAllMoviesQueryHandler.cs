@@ -39,6 +39,7 @@ internal sealed class GetAllMoviesQueryHandler
                 x.MovieId,
                 x.Name,
                 x.Duration,
+                x.Description,
                 x.MovieImages
                     .Select(img => img.Url)
                     .ToList(),

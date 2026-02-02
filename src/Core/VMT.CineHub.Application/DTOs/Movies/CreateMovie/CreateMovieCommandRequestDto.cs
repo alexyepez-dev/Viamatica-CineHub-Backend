@@ -1,6 +1,10 @@
-﻿namespace VMT.CineHub.Application.DTOs.Movies.CreateMovie;
+﻿using VMT.CineHub.Domain.Enums;
+
+namespace VMT.CineHub.Application.DTOs.Movies.CreateMovie;
 public sealed record CreateMovieCommandRequestDto
 (
     string Name,
-    int Duration
+    int Duration,
+    string Description,
+    MovieStatus Status
 );

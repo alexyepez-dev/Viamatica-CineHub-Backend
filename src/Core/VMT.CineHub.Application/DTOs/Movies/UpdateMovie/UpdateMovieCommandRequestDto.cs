@@ -4,5 +4,6 @@ namespace VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
 public sealed record UpdateMovieCommandRequestDto(
     string Name,
     int Duration,
+    string Description,
     MovieStatus Status
 );
