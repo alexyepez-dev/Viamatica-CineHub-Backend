@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using System.Text.Json;
 using VMT.CineHub.Middlewares.Constants;
 
-namespace VMT.CineHub.Middlewares.Middlewares;
+namespace VMT.CineHub.Middlewares.GlobalException;
 
 public sealed class GlobalExceptionMiddleware
 (

@@ -1,14 +1,20 @@
 using System.Text.Json.Serialization;
+using Serilog;
 using VMT.CineHub.Api.Extension;
 using VMT.CineHub.Application.Extension;
-using VMT.CineHub.Middlewares.Middlewares;
+using VMT.CineHub.Middlewares.GlobalException;
+using VMT.CineHub.Middlewares.Serilog;
 using VMT.CineHub.Persistence.Extension;
 using VMT.CineHub.Security.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+var host = builder.Host;
 var jsonConvertEnum = new JsonStringEnumConverter();
+
+SerilogConfiguration.UseLoggerConfiguration(configuration);
+host.UseSerilog();
 
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
@@ -34,6 +40,8 @@ services.AddWebApiLayer()
 services.AddAuthorization();
 
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 if (app.Environment.IsDevelopment())
 {

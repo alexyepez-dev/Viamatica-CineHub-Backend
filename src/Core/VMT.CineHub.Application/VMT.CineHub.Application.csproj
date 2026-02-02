@@ -16,7 +16,14 @@
 		<Folder Include="Interfaces\MovieTheaters\UpdateMovieTheater\" />
 		<Folder Include="Modules\MovieTheaters\DeleteMovieTheater\" />
 		<Folder Include="Modules\MovieTheaters\UpdateMovieTheater\" />
+		<Folder Include="Validations\MovieMovieTheaters\" />
+		<Folder Include="Validations\MovieMovieTheaters\AssignMovieToMovieTheater\" />
 		<Folder Include="Validations\Movies\CreateMovie\" />
+		<Folder Include="Validations\Movies\DeleteMovie\" />
+		<Folder Include="Validations\Movies\GetAllMovies\" />
+		<Folder Include="Validations\MovieTheaters\" />
+		<Folder Include="Validations\MovieTheaters\CreateMovieTheater\" />
+		<Folder Include="Validations\MovieTheaters\UpdateMovieTheater\" />
 	</ItemGroup>
 
 	<ItemGroup>

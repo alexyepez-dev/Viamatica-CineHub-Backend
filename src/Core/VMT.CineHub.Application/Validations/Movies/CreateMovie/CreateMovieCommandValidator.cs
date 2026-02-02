@@ -1,10 +1,11 @@
-﻿using FluentValidation;
-using VMT.CineHub.Application.DTOs.Movies.UpdateMovie;
+using FluentValidation;
+using VMT.CineHub.Application.DTOs.Movies.CreateMovie;
 
-namespace VMT.CineHub.Application.Validations.Movies.UpdateMovie;
-public sealed class UpdateMovieCommandValidator : AbstractValidator<UpdateMovieCommandRequestDto>
+namespace VMT.CineHub.Application.Validations.Movies.CreateMovie;
+
+public sealed class CreateMovieCommandValidator : AbstractValidator<CreateMovieCommandRequestDto>
 {
-    public UpdateMovieCommandValidator()
+    public CreateMovieCommandValidator()
     {
         RuleFor(x => x.Name)
         .NotEmpty()
