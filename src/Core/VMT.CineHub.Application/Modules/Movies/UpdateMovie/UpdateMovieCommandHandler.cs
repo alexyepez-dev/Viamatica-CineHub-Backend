@@ -16,11 +16,11 @@ internal sealed class UpdateMovieCommandHandler
     private readonly IRepository<Movie> repository = _repository;
     private readonly CineHubDbContext dbContext = _dbContext;
 
-    public async Task<Result<UpdateMovieCommandResponseDto>> Execute(UpdateMovieCommandRequestDto dto, string movieId)
+    public async Task<Result<Movie>> Execute(UpdateMovieCommandRequestDto dto, string movieId)
     {
         var movie = await repository.GetByAsync(x => x.MovieId == movieId);
 
-        if (movie is null) return Result<UpdateMovieCommandResponseDto>.Fail
+        if (movie is null) return Result<Movie>.Fail
         (
             $"We're sorry, movie {dto.Name} not found",
             ErrorType.NotFound
@@ -37,6 +37,6 @@ internal sealed class UpdateMovieCommandHandler
         await dbContext.SaveChangesAsync();
 
         var result = new UpdateMovieCommandResponseDto($"Movie {dto.Name} successful modified.");
-        return Result<UpdateMovieCommandResponseDto>.Ok(result);
+        return Result<Movie>.Ok(movie);
     }
 }
