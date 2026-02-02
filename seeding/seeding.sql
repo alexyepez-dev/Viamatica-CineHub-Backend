@@ -1,14 +1,8 @@
--- =============================================
--- SEED DATA - VMT CineHub
--- =============================================
-
--- 2. INSERTAR CINES (MovieTheater)
 INSERT INTO MovieTheater (MovieTheaterId, Name, Status) VALUES 
 ('MVTHR_01H1KRYN5B7W1P8X9Y2Z3A4B5C', 'Sala IMAX - Grand Central', 'Available'),
 ('MVTHR_01H1KRYN5B7W1P8X9Y2Z3A4B5D', 'Sala 3D - Norte', 'Available'),
 ('MVTHR_01H1KRYN5B7W1P8X9Y2Z3A4B5E', 'Cine Premium - VIP', 'Available');
 
--- 3. INSERTAR PELÍCULAS (Movie)
 INSERT INTO Movie (MovieId, Name, Duration, Status, Slug, Description) VALUES 
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4001', 'Spiderman no way home', 148, 'NowPlaying', 'spiderman-no-way-home', 'Peter Parker busca la ayuda del Doctor Strange para que el mundo olvide su identidad, desencadenando el caos multiversal.'),
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4002', 'Superman legacy', 155, 'NowPlaying', 'superman-legacy', 'La historia de los viajes de Superman para reconciliar su herencia kryptoniana con su educación humana.'),
@@ -21,7 +15,6 @@ INSERT INTO Movie (MovieId, Name, Duration, Status, Slug, Description) VALUES
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4009', 'Megamente', 95, 'NowPlaying', 'megamente', 'Un supervillano brillante pero fracasado finalmente derrota a su némesis, solo para descubrir que la vida no tiene sentido sin un héroe.'),
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4010', 'Kunfupanda', 92, 'NowPlaying', 'kunfupanda', 'Po, un panda torpe, es elegido inesperadamente como el Guerrero Dragón para salvar el Valle de la Paz.');
 
--- 4. INSERTAR IMÁGENES (MovieImage)
 INSERT INTO MovieImage (MovieImageId, Url, MovieId) VALUES 
 ('MVI_01H1KRYN5B7W1P8X9Y2Z3A4I01', 'https://cdn.mos.cms.futurecdn.net/ZykbqpVRia9y9Yg3RA7MgD.jpg', 'MV_01H1KRYN5B7W1P8X9Y2Z3A4001'),
 ('MVI_01H1KRYN5B7W1P8X9Y2Z3A4I02', 'https://images-na.ssl-images-amazon.com/images/I/81T0GmGsrZL.jpg', 'MV_01H1KRYN5B7W1P8X9Y2Z3A4001'),
@@ -36,7 +29,6 @@ INSERT INTO MovieImage (MovieImageId, Url, MovieId) VALUES
 ('MVI_01H1KRYN5B7W1P8X9Y2Z3A4I17', 'https://m.media-amazon.com/images/I/51zFjYOtuJL.jpg', 'MV_01H1KRYN5B7W1P8X9Y2Z3A4009'),
 ('MVI_01H1KRYN5B7W1P8X9Y2Z3A4I18', 'https://m.media-amazon.com/images/I/51C2r6vwyjL.jpg', 'MV_01H1KRYN5B7W1P8X9Y2Z3A4010');
 
--- 5. RELACIÓN CINE-PELÍCULA (MovieMovieTheater)
 INSERT INTO MovieMovieTheater (MovieId, MovieTheaterId, PublicationDate, EndDate) VALUES 
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4001', 'MVTHR_01H1KRYN5B7W1P8X9Y2Z3A4B5C', '2025-01-01', '2025-12-31'),
 ('MV_01H1KRYN5B7W1P8X9Y2Z3A4002', 'MVTHR_01H1KRYN5B7W1P8X9Y2Z3A4B5C', '2025-01-01', '2025-12-31'),
